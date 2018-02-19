@@ -1,0 +1,825 @@
+*
+	margin: 0
+	padding: 0
+	outline: none
+
+a
+	text-decoration: none
+	color: $b
+	&:hover
+		color: $main
+
+.flex
+	+df
+
+.between
+	justify-content: space-between
+
+.container
+	padding: 0 $container-gap
+	margin: 0 auto
+	max-width: 2000px
+	+r(1000)
+		padding: 0 15px
+	&.full
+		padding: 0 15px
+		max-width: 100%
+	&.flex
+		+r(1000)
+			display: block
+
+.section
+	&__left
+		padding-right: 15px
+	&__right
+		padding-left: 15px
+	&__left,
+	&__right
+		width: 50%
+		+r(1000)
+			width: 100%
+			padding: 0
+
+.hero
+	min-height: $hero-min
+	overflow: hidden
+	.slick-slider
+		-webkit-user-select: text
+		-khtml-user-select: text
+		-moz-user-select: text
+		-ms-user-select: text
+		user-select: text
+	.slick-list.draggable
+		-webkit-user-select: none
+		-khtml-user-select: none
+		-moz-user-select: none
+		-ms-user-select: none
+		user-select: none
+	&__topline
+		+df
+		justify-content: space-between
+		height: 15vh
+		height: calc(15vh - 1px)
+		align-items: center
+		border-bottom: 1px solid #eff1f5
+		min-height: 103px
+		overflow: hidden
+	&__logo
+		display: block
+		+rale
+		font-size: 30px
+		+pr
+		z-index: 2
+		line-height: 75px
+		height: 67px
+		padding-left: 31px
+		left: 13px
+		span
+			display: inline-block
+			color: $b
+			transition: color $t
+		&:before
+			+c
+			+pa
+			left: -13px
+			top: 50%
+			transform: translate(0, -50%)
+			border: 6px solid $main
+			width: 32px
+			height: 32px
+			z-index: 0
+			transition: left $t, background $t
+		&:after
+			+c
+			+pa
+			left: 0
+			top: 0
+			border: 6px solid #f2f2f2
+			width: 56px
+			height: 56px
+			z-index: -1
+			transition: transform $t
+			transition-delay: .3s
+		&:hover
+			color: $b
+			&:before
+				left: 13px
+				z-index: -1
+				background: $b
+			&:after
+				transform: rotate(45deg) scale(1.3)
+			span
+				color: $w
+				transition: color $t
+	&__menu
+		+clr
+		li
+			float: left
+			margin-left: 85px
+			+rale
+			font-size: 18px
+			&:first-child
+				margin-left: 0
+			a
+				display: block
+				+pr
+				&:before
+					+c
+					+pa
+					bottom: -12px
+					height: 6px
+					background: #f2f2f2
+					left: 50%
+					right: 50%
+					opacity: 0
+					visibility: hidden
+					transition: opacity $t, visibility $t, right $t, left $t
+				&:hover,
+				&.is-active
+					&:before
+						opacity: 1
+						visibility: visible
+						right: 0
+						left: 0
+					+r(1000)
+						color: $w
+		&.is-active
+			opacity: 1
+			visibility: visible
+		+r(1000)
+			+pf
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			background: rgba($main, .9)
+			text-align: center
+			z-index: 998
+			opacity: 0
+			visibility: hidden
+			padding: 15px 15px 50px
+			height: 100%
+			max-height: 100vh
+			overflow-y: auto
+			li
+				float: none
+				margin-left: 0
+				a
+					display: block
+					padding: 15px 0
+					&:before
+						display: none
+					&:hover
+						color: $w
+		&-mobile
+			width: 50px
+			height: 50px
+			+pf
+			bottom: 15px
+			right: 15px
+			z-index: 999
+			outline: none
+			cursor: pointer
+			border: 6px solid #f2f2f2
+			background-color: transparent
+			display: none
+			transition: border-color $t, transform .4s linear
+			&:hover
+				border-color: $main
+			&.is-active
+				border-color: shade($main, 20%)
+				transform: rotate(-45deg) scale(.7)
+			+r(1000)
+				display: block
+	&__search
+		background-color: transparent
+		border: 0
+		cursor: pointer
+		outline: none
+		svg
+			width: 28px
+			height: 28px
+			path
+				fill: $b
+		&:hover
+			svg
+				path
+					fill: $main
+		// +r(1000)
+		// 	+pa
+		// 	right: 100px
+	&__slider-wrapper
+		+pr
+		height: 85vh
+		min-height: $hero-min
+	&__slider
+		height: 100%
+		// .slick-list,
+		// .slick-track,
+		// .slick-slide,
+		// .hero__item
+		// 	height: 85vh
+		&-bottomline
+			+pa
+			+r(350)
+				display: none
+	&__item
+		+pr
+		min-height: $hero-min
+		>
+			.container
+				height: 85vh
+				+df
+				align-items: center
+				+pr
+				z-index: 2
+				min-height: $hero-min
+				&:before
+					+c
+					+pa
+					// left: 11.5vmin
+					left: 17.5vmin
+					width: 1px
+					top: 0
+					bottom: 0
+					background: #eff1f5
+					+r(1000)
+						display: none
+	&__image
+		+pa
+		height: 85vh
+		min-height: 700px
+		right: 0
+		top: 0
+		width: 75vw
+		background-size: cover
+		background-repeat: no-repeat
+		background-position: 50% 0
+		min-height: $hero-min
+		transform: translate(50px, 50px) scale(.99)
+		transition: transform .9s linear
+		+r(350)
+			width: 100vw
+	.slick-active
+		.hero__image
+			transform: translate(0, 0) scale(1)
+	&__name
+		font-size: 18px
+		color: $context
+		+rale
+		margin-bottom: 10px
+	&__title
+		font-size: 10vmin
+		+rale
+		line-height: 10vmin
+		+pr
+		&:before
+			+c
+			+pa
+			bottom: -25px
+			left: 0
+			right: 0
+			height: 15px
+			background: url($line-image)
+			background-repeat: repeat-x
+	&__info
+		+pr
+	&__number
+		+pa
+		left: -$container-gap/1.5
+		top: 50%
+		transform: translate(0, -50%)
+		width: $container-gap/2
+		height: $container-gap/2
+		+df
+		+cc
+		color: $w
+		+rale
+		font-size: $container-gap/4
+		line-height: $container-gap/4
+		background: $main
+		+r(1000)
+			display: none
+	&__arrows
+		+pa
+		top: 0
+		left: 0
+		bottom: 0
+		right: 0
+		svg
+			width: 10px
+			height: 20px
+			path
+				fill: #eff1f5
+		+r(1000)
+			display: none
+	&__arrow
+		&-prev,
+		&-next
+			+pa
+			width: $container-gap/4
+			height: $container-gap/4
+			border: 1px solid #eff1f5
+			+df
+			+cc
+			z-index: 3
+			// left: $container-gap/2.29
+			left: $container-gap/2.19
+			background: $bg
+			&:hover
+				svg
+					path
+						fill: $main
+		&-prev
+			// top: calc(50% - 7.6vmin)
+			top: calc(50% - 11.4vmin)
+			transform: translate(0, -50%)
+			border-bottom: 0
+		&-next
+			// bottom: calc(50% - 7.6vmin)
+			bottom: calc(50% - 11.4vmin)
+			transform: translate(0, 50%)
+			border-top: 0
+			svg
+				transform: rotate(-180deg)
+	&__buttons
+		+pr
+		bottom: 55px
+		ul
+			+clr
+			li
+				float: left
+				margin-left: 63px
+				&:first-child
+					margin-left: 0
+				&.slick-active
+					button
+						color: $b
+						cursor: default
+						&:before
+							left: -15px
+							right: -15px
+		button
+			border: 0
+			background-color: transparent
+			cursor: pointer
+			outline: none
+			font-size: 18px
+			color: $context
+			+rale
+			transition: color $t
+			+pr
+			&:before
+				+c
+				+pa
+				left: 50%
+				right: 50%
+				height: 2px
+				background: $b
+				top: 50%
+				transition: left $t, right $t
+
+section
+	padding: $section-padding 0
+	+r(1000)
+		padding: $section-padding/2.3 0
+
+.main
+	&__text
+		line-height: 48px
+		color: $context
+		+r(1000)
+			line-height: 34px
+
+.ideas
+	+pr
+	padding-bottom: 0
+	>
+		.container
+			+pr
+	&__left
+		+r(1000)
+			margin-bottom: $section-gap
+	&__right
+		+r(1000)
+			text-align: right
+	&__text
+		+r(1000)
+			+pr
+			z-index: 3
+	&__title
+		font-size: 8vmin
+		+rale
+		color: $context
+		+r(1000)
+			+pr
+			z-index: 3
+	&__image
+		+pa
+		top: 50%
+		transform: translate(0, -55%)
+		right: 0
+		width: 35vw
+		+r(1000)
+			+pa
+			top: auto
+			bottom: 0
+			transform: none
+			width: 50vw
+			opacity: .7
+		+rmin(2000)
+			width: 100vh
+		img
+			display: block
+			width: 100%
+	&__slogan
+		font-size: 10vmin
+		+rale
+		line-height: 10vmin
+		+pr
+		z-index: 1
+		top: 50%
+		transform: translate(0, -50%)
+		text-align: right
+		+rmin(2000)
+			padding-right: $container-gap*1.5
+
+// img
+// 	width: 100%
+
+.categories
+	+clr
+	padding-bottom: 0
+	&__item
+		float: left
+		width: 25%
+		background-color: $b
+		background-size: cover
+		background-position: 50% 50%
+		background-repeat: no-repeat
+		+pr
+		+r(1170)
+			width: 50%
+		+r(769)
+			width: 100%
+		&:before
+			+c
+			+pa
+			top: 0
+			bottom: 0
+			left: 0
+			right: 0
+			background: $b
+			opacity: .7
+			transition: opacity $t
+		&:hover
+			&:before
+				opacity: .3
+		a
+			+df
+			+cc
+			height: 70vmin
+			min-height: 770px
+			color: $w
+			+rale
+			font-size: 5vmin
+			+pr
+			+r(1170)
+				min-height: 300px
+			+r(1000)
+				font-size: 30px
+			&:before
+				+c
+				+pa
+				top: 2vmin
+				left: 2vmin
+				right: 2vmin
+				bottom: 2vmin
+				border: 1vmin solid $main
+				opacity: 0
+				visibility: hidden
+				transition: opacity $t, visibility $t
+			&:hover
+				&:before
+					opacity: 1
+					visibility: visible
+
+.section
+	&__title
+		display: inline-block
+		font-size: 16px
+		color: $main
+		text-align: center
+		+pr
+		left: 50%
+		transform: translate(-50%, 0)
+		margin-bottom: 100px
+		span
+			display: block
+			padding: 0 15px
+			background: $bg
+			z-index: 1
+			+pr
+		&:before
+			+c
+			+pa
+			width: 200%
+			height: 1px
+			background: $main
+			top: 50%
+			left: 50%
+			transform: translate(-50%, -50%)
+
+.work
+	padding-bottom: 0
+	&__item
+		float: left
+		width: 33.3%
+		background-size: cover
+		background-position: 50% 50%
+		background-repeat: no-repeat
+		+pr
+		+r(1000)
+			width: 100%
+		a
+			height: 40vmin
+			min-height: 200px
+			+df
+			+cc
+			color: $b
+			+rale
+			font-size: 5vmin
+			+pr
+			z-index: 3
+			+r(1000)
+				font-size: 30px
+	&__title
+		+pr
+		z-index: 3
+	&__number
+		color: $w
+		text-shadow: 0 0 55px rgba(14, 17, 25, 0.15)
+		font-size: 20vmin
+		+pa
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		+rale
+		cursor: default
+		+r(1000)
+			font-size: 120px
+	&__items
+		+clr
+		background-image: url('../images/work.png')
+		background-size: cover
+		background-position: 50% 50%
+		background-repeat: no-repeat
+
+.projects
+	min-height: 600px
+	padding-bottom: 0
+	.slick-slider
+		-webkit-user-select: text
+		-khtml-user-select: text
+		-moz-user-select: text
+		-ms-user-select: text
+		user-select: text
+	.slick-list.draggable
+		-webkit-user-select: none
+		-khtml-user-select: none
+		-moz-user-select: none
+		-ms-user-select: none
+		user-select: none
+	&__slider
+		&-wrapper
+			+pr
+			margin-bottom: $section-gap - 10px
+	&__arrows
+		+pa
+		left: 50%
+		z-index: 3
+		top: 50%
+		transform: translate(-150%, -50%)
+		svg
+			width: 10px
+			height: 20px
+			path
+				fill: $w
+		+r(1000)
+			top: 0
+			transform: none
+			left: auto
+			right: 0
+	&__next,
+	&__prev
+		width: 10vmin
+		height: 10vmin
+		background: $main
+		+df
+		+cc
+		color: $w
+		&:hover
+			background: shade($main, 10%)
+	&__prev
+		svg
+			transform: rotate(-180deg)
+	&__item
+		+df
+		justify-content: space-between
+	&__left,
+	&__right
+		width: 50%
+	&__left
+		+r(1000)
+			display: none
+	&__right
+		padding-left: 20vmin
+		+df
+		align-items: center
+		min-height: 700px
+		min-height: 76vmin
+		+r(1000)
+			width: 100%
+			padding: 0 15px
+	&__image
+		height: 100%
+		background-size: cover
+		background-position: 50% 50%
+		background-repeat: no-repeat
+	&__title
+		font-size: 10vmin
+		line-height: 10vmin
+		+rale
+		margin-bottom: 5vmin
+		+r(1000)
+			padding-right: 10vmin
+	&__info
+		+pr
+	&__number
+		font-size: 50vmin
+		+rale
+		color: #f2f2f2
+		+pa
+		right: $container-gap/2
+		top: 50%
+		transform: translate(0, -50%)
+		z-index: -1
+	.main__text
+		margin-bottom: 5vmin
+	&__nav
+		+r(1000)
+			display: none
+		&-item
+			min-height: 150px
+			cursor: pointer
+			background-size: cover
+			background-position: 50% 50%
+			background-repeat: no-repeat
+			+pr
+			&:before
+				+c
+				+pa
+				top: 0
+				bottom: 0
+				left: 0
+				right: 0
+				border: 2vmin solid $main
+				opacity: 0
+				transition: opacity .9s linear
+		.slick-current
+			.projects__nav-item
+				&:before
+					opacity: 1
+		// .slick-slide
+		// 	margin-left: 5vmin
+		// 	&:nth-of-type(1)
+		// 		margin-left: 0
+		// .slick-track
+		// 	+df
+		// 	justify-content: center
+		// .slick-slide
+		// 	width: auto !important
+
+.btn
+	padding: 15px 25px
+	background: $bg
+	display: block
+	text-align: center
+	text-transform: uppercase
+	color: $context
+	border: 1px solid $context
+	&:hover
+		color: $context
+	&__transparent
+		background-color: transparent
+	&__inline
+		display: inline-block
+
+.sponsors
+	padding-bottom: 0
+	>
+		.container
+			+df
+			justify-content: space-between
+			+r(1300)
+				+clr
+				// display: block
+				flex-wrap: wrap
+	&__item
+		width: 16.66666666666667%
+		text-align: center
+		+r(1300)
+			width: 33.3%
+			float: left
+			margin-bottom: $section-gap
+		+r(550)
+			width: 50%
+		+r(350)
+			width: 100%
+		img
+			max-width: 100%
+
+.contacts
+	// padding-bottom: 0
+	>
+		.container
+			+pr
+	&__item
+		border: 1vmin solid $main
+		padding: 90px
+		+df
+		justify-content: space-between
+		+pr
+		+r(1000)
+			padding: 25px
+	&__left
+		width: 60%
+		+r(1170)
+			width: 50%
+		+r(1000)
+			width: 100%
+	&__right
+		width: 40%
+		+pa
+		top: -30px
+		right: -30px
+		bottom: -30px
+		z-index: -1
+		background-size: cover
+		background-position: 50% 50%
+		+r(1170)
+			width: 50%
+		+r(1000)
+			display: none
+	&__tabs
+		margin-bottom: 80px
+		a
+			+rale
+			font-size: 16px
+			color: $context
+			text-transform: uppercase
+			margin-left: 10px
+			&:first-child
+				margin-left: 0
+			&:hover,
+			&.is-active
+				text-decoration: underline
+				color: $main
+		+r(1000)
+			margin-bottom: 30px
+	&__form
+		input,
+		textarea
+			background: $bg
+			display: block
+			border: 0
+			margin-bottom: 30px
+			+rale
+			resize: none
+			width: 100%
+			color: $main
+			+placeholder
+				color: #e4e6eb
+		input
+			height: 50px
+			line-height: 50px
+			font-size: 30px
+		textarea
+			font-size: 20px
+			height: 150px
+		button
+			+pr
+			left: 50%
+			transform: translate(-50%, 0)
+			cursor: pointer
+
+.footer
+	background: #0f0f0f
+	padding: 40px 0
+	color: #464646
+	&__logo
+		text-align: center
+		margin-bottom: 20px
+	&__copyright
+		+ral
+		text-align: center
